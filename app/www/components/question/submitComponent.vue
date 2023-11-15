@@ -34,7 +34,7 @@ export default {
         .post(`${process.env.baseUrl}/user/createUser`,{email: this.email})
         .then((res) => {
                 if (res.data.status === 'success') {
-                  this.$router.push("/question");
+                  this.$router.push(`/question?id=${res.data.data._id}&email=${res.data.data.email}`);
                 }
               });
     },

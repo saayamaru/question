@@ -3,6 +3,9 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 const cors = require('cors');
+
+dotenv.config();
+
 const corsOptions ={
     origin: process.env.core_origin, 
     credentials:true,            //access-control-allow-credentials:true
@@ -11,7 +14,6 @@ const corsOptions ={
 
 //config
 app.use(cors(corsOptions));
-dotenv.config();
 app.use(express.json());
 
 //mongodb connect
@@ -34,7 +36,6 @@ app.use(express.urlencoded({
 }));
 
 //router
-app.set('view engine', 'ejs');
 app.use('/user', require('./routes/user.routes'));
 app.use('/question', require('./routes/question.routes'));
 
